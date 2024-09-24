@@ -47,7 +47,7 @@ export const getCountryFlag = async (req: Request, res: Response, next: NextFunc
         const { countryCode } = req.params;
         const flagData = await axios.get(process.env.FLAG_URL as string);
 
-        const countryData = flagData.data.data.find((country: any) => country.iso3 === countryCode);
+        const countryData = flagData.data.data.find((country: any) => country.iso2 === countryCode);
 
         res.status(200).json(countryData.flag);
     } catch (error) {
