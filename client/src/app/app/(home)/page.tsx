@@ -1,4 +1,4 @@
-import { CountryList } from "./_components/country-list";
+import { CountryList } from "./_components/countryList";
 
 export default async function Page(){
     return (

@@ -30,7 +30,7 @@ export const getCountryPopulation = async (req: Request, res: Response, next: Ne
         const { countryCode } = req.params;
         const populationData = await axios.get(process.env.POPULATION_DATA as string);
 
-        const countryData = populationData.data.data.find((country: any) => country.code === countryCode);
+        const countryData = populationData.data.data.find((country: any) => country.code.substring(0, 2) === countryCode);
 
         if (countryData) {
             res.status(200).json(countryData.populationCounts);

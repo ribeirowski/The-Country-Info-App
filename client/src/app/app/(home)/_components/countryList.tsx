@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { motion } from "framer-motion"
-import Image from 'next/image'
 import useCountries from '@/hooks/use-countries'
 
 export function CountryList() {
@@ -22,7 +21,7 @@ export function CountryList() {
 
     return (
         <div className="w-full bg-secondary py-12 px-32">
-            <div className='flex flex-column justify-between mb-4'>
+            <div className='flex flex-column justify-between mb-2'>
                 <h2 className="text-3xl font-bold mb-6 text-primary">Explore Countries</h2>
                 <Input
                     type="search"
@@ -40,17 +39,10 @@ export function CountryList() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: index * 0.05 }}
                     >
-                        <Link href={`/country/${country.countryCode}`} className="block">
+                        <Link href={`/app/country/${country.countryCode}`} className="block">
                             <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
                                 <CardContent className="px-8 py-4 flex items-center space-x-4">
-                                    <Image
-                                        src={country.flagUrl}
-                                        alt={`Flag of ${country.name}`}
-                                        width={80} 
-                                        height={50} 
-                                        className="rounded"
-                                    />
-                                    <span className="font-medium text-foreground">{country.countryCode}</span>
+                                    <p className="font-medium text-foreground">{country.name}</p>
                                 </CardContent>
                             </Card>
                         </Link>

@@ -23,12 +23,8 @@ const useCountries = () => {
 
     const fetchAvailableCountries = async () => {
         try {
-            const response = await axios.get(process.env.NEXT_PUBLIC_SERVER_URL + '/available-countries');
-            const countriesWithFlags = await Promise.all(response.data.map(async (country: Country) => {
-                const flagUrl = await fetchCountryFlag(country.countryCode);
-                return { ...country, flagUrl };
-            }));
-            setCountries(countriesWithFlags);
+            const response = await axios.get(process.env.NEXT_PUBLIC_SERVER_URL as string + '/available-countries');
+            setCountries(response.data);
         } catch (err) {
             if (axios.isAxiosError(err)) {
                 setError(err.message || 'Failed to fetch countries.');
@@ -60,6 +56,7 @@ const useCountries = () => {
         setLoading(true);
         try {
             const response = await axios.get(process.env.NEXT_PUBLIC_SERVER_URL as string + `/population/${countryCode}`);
+            console.log(response.data)
             return response.data;
         } catch (err) {
             if (axios.isAxiosError(err)) {
