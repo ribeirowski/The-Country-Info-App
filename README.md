@@ -44,6 +44,7 @@ cp .env.example .env
 **1. Rodar o server (Node.js)**
 No diretório server/, execute o seguinte comando para iniciar o servidor backend:
 
+yarn install
 yarn dev
 
 Por padrão, o servidor será iniciado em http://localhost:3001. Verifique o arquivo .env para a porta correta.
@@ -51,6 +52,7 @@ Por padrão, o servidor será iniciado em http://localhost:3001. Verifique o arq
 **2. Rodar o client (Next.js)**
 No diretório client/, execute o comando para iniciar o servidor de desenvolvimento do Next.js:
 
+yarn install
 yarn dev
 
 O client será iniciado em http://localhost:3000.
