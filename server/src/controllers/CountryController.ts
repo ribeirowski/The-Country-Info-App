@@ -30,7 +30,7 @@ export const getCountryPopulation = async (req: Request, res: Response, next: Ne
         const { countryCode } = req.params;
         const populationData = await axios.get(process.env.POPULATION_DATA as string);
 
-        const countryData = populationData.data.data.find((country: any) => country.code === countryCode);
+        const countryData = populationData.data.data.find((country: any) => country.code.substring(0, 2) === countryCode);
 
         if (countryData) {
             res.status(200).json(countryData.populationCounts);
@@ -47,7 +47,7 @@ export const getCountryFlag = async (req: Request, res: Response, next: NextFunc
         const { countryCode } = req.params;
         const flagData = await axios.get(process.env.FLAG_URL as string);
 
-        const countryData = flagData.data.data.find((country: any) => country.iso3 === countryCode);
+        const countryData = flagData.data.data.find((country: any) => country.iso2 === countryCode);
 
         res.status(200).json(countryData.flag);
     } catch (error) {
